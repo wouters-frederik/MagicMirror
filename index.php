@@ -71,6 +71,10 @@ foreach($weather_data->observations as $observation) {
   </script>
 </head>
 <body>
+<audio controls>
+  <source src="http://mp3.streampower.be/ra2vlb-high.mp3" type="audio/mpeg">
+</audio>
+
 <div id="wrapper">
   <div id="upper-left">
     <div id="clock"></div> <!-- Including the date/time-script -->
