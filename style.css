@@ -1,82 +1,163 @@
 
 /* BASIC*/
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
-	
+
 body {
-	background: #000;
-	color: #fff;
+    background: #000;
+    color: #fff;
 }
 
 /* LAYOUT */
-	/* The width and height of "wrapper", "upper-left", "upper-right"
-	and "bottom" needs to be changed in order to match your monitor's resolution */
-#wrapper { 
-	width: 750px;
-	height: 1300px;
-	margin: 0 auto;
+/* The width and height of "wrapper", "upper-left", "upper-right"
+and "bottom" needs to be changed in order to match your monitor's resolution */
+#wrapper {
+    width: 750px;
+    height: 1300px;
+    margin: 0 auto;
 }
 
-	#upper-left {
-		width: 325px;
-		margin: 50px 50px 0 0;
-		height: 1150px;
-		float: left;
-		text-align: center;
-	}
-	
-	#upper-right {
-		width: 340px;
-		height: 1050px;
-		margin: 150px 35px 0 0;
-		float: left;
-		text-align: right;
-	}
-	
-	#bottom {
-		width: 550px;
-		height: 100px;
-		margin: 0 100px 0 100px;
-		clear: both;
-		background: url(bg.gif) repeat-x;
-		text-align: center;
-	}
+#upper-left {
+    width: 325px;
+    margin: 50px 50px 0 0;
+    height: 1150px;
+    float: left;
+    text-align: center;
+}
+
+#upper-right {
+    width: 340px;
+    height: 1050px;
+    margin: 150px 35px 0 0;
+    float: left;
+    text-align: right;
+}
+
+#bottom {
+    width: 550px;
+    height: 100px;
+    margin: 0 100px 0 100px;
+    clear: both;
+    background: url(bg.gif) repeat-x;
+    text-align: center;
+}
 
 /* TEXT */
 h1 {
-	font-family: 'Roboto', sans-serif;
-	font-size: 102px;
-	font-weight: 300;
-	line-height: 102px;
-	}
+    font-family: 'Roboto', sans-serif;
+    font-size: 102px;
+    font-weight: 300;
+    line-height: 102px;
+}
 
 h2 {
-	font-family: 'Roboto', sans-serif;
-	font-size: 24px;
-	font-weight: 300;
-	}
-	
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+}
+
 h2.smaller {
-	font-size: 22px;
-	letter-spacing: 1px;
-	}	
-	
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
 h3 {
-	font-family: 'Roboto', sans-serif;
-	font-size: 42px;
-	font-weight: 300;
-	padding: 20px 0 0 0;
-	}
-	
+    font-family: 'Roboto', sans-serif;
+    font-size: 42px;
+    font-weight: 300;
+    padding: 20px 0 0 0;
+}
+
 p {
-	font-family: 'Roboto', sans-serif;
-	font-size: 14px;
-	font-weight: 300;
-	}	
-	
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+
 p.date {
-	font-size: 12px;
-	font-weight: 600;
-	}
+    font-size: 12px;
+    font-weight: 600;
+}
+#weather {
+    position:relative;
+}
+#weather h3{
+    font-size:82px;
+}
+
+
+.weather-icon {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    bottom: 40px;
+    right: 10px;
+    background: url(/deredactie_sprite.svg) no-repeat 40px 0
+
+}
+.no-svg .weather-icon {
+    background: url(/deredactie_sprite.png) no-repeat 40px 0;
+
+}
+.weather-icon.helder {
+    background-position: -23px -0px
+}
+.weather-icon.helder.night {
+    background-position: -70px -0px
+}
+.weather-icon.wolk {
+    background-position: -23px -50px
+}
+.weather-icon.wolk.night {
+    background-position: -70px -50px
+}
+.weather-icon.helder_wolk {
+    background-position: -23px -100px
+}
+.weather-icon.helder_wolk.night {
+    background-position: -70px -100px
+}
+.weather-icon.onweer {
+    background-position: -23px -150px
+}
+.weather-icon.onweer.night {
+    background-position: -70px -150px
+}
+.weather-icon.regen {
+    background-position: -23px -200px
+}
+.weather-icon.regen.night {
+    background-position: -70px -200px
+}
+.weather-icon.sneeuw {
+    background-position: -23px -250px
+}
+.weather-icon.sneeuw.night {
+    background-position: -70px -250px
+}
+.weather-icon.hagel {
+    background-position: -23px -300px
+}
+.weather-icon.hagel.night {
+    background-position: -70px -300px
+}
+.weather-icon.mist {
+    background-position: -23px -350px
+}
+.weather-icon.mist.night {
+    background-position: -70px -350px
+}
+.weather-icon.mist_slip {
+    background-position: -23px -400px
+}
+.weather-icon.mist_slip.night {
+    background-position: -70px -400px
+}
+.weather-icon.helder_wolk_grijs {
+    background-position: -23px -450px
+}
+.weather-icon.helder_wolk_grijs.night {
+    background-position: -70px -450px
+}

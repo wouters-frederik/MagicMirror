@@ -1,7 +1,27 @@
-﻿<?php
+<?php
 date_default_timezone_set("Europe/Amsterdam");
 setlocale(LC_ALL, 'nl_NL');
 setlocale(LC_TIME, 'nl_NL');
+
+function fetch_data($url) {
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_URL, $url);
+  $result = curl_exec($ch);
+  curl_close($ch);
+  return $result;
+}
+
+$weather_url = "https://services.vrt.be/weather/observations/belgische_streken?accept=application%2fvnd.weather.vrt.be.observations_1.0%2Bjson";
+$weather_data = json_decode(fetch_data($weather_url));
+//var_dump($weather_data);
+foreach($weather_data->observations as $observation) {
+  if ($observation->location == 'Centrum') {
+    $weather_temp = $observation->temperature;
+    $weather_img = $observation->weathertype;
+  }
+}
 ?>
 <!doctype html>
 <html lang="sv">
@@ -54,17 +74,23 @@ setlocale(LC_TIME, 'nl_NL');
 <div id="wrapper">
   <div id="upper-left">
     <div id="clock"></div> <!-- Including the date/time-script -->
+    <br>
+    <br>
+    <hr>
+    <br>
+    <div id="weather">
+      <h3>
+        <?php echo $weather_temp; ?>&#8451;
+        <i class="weather-icon helder_wolk night"></i>
+      </h3>
+    </div>
   </div>
+
   <div id="upper-right">
     <h2>...</h2>
     <?php // Code for getting the JSON FEED
     $url = 'https://admin.radio1.be/api/1.4/articles';
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_URL, $url);
-    $result = curl_exec($ch);
-    curl_close($ch);
+    $result = fetch_data($url);
 
     $data = json_decode($result);
     $feed = [];
@@ -102,6 +128,7 @@ setlocale(LC_TIME, 'nl_NL');
     ?>
     <p>radio2.be</p>
   </div>
+
   <div id="bottom">
     <h3>
       <?php // Depending on the hour of the day a different message is displayed.
