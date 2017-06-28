@@ -71,7 +71,7 @@ foreach($weather_data->observations as $observation) {
   </script>
 </head>
 <body>
-<audio controls>
+<audio controls id="livestream">
   <source src="http://mp3.streampower.be/ra2vlb-high.mp3" type="audio/mpeg">
 </audio>
 
@@ -148,7 +148,24 @@ foreach($weather_data->observations as $observation) {
       ?>
     </h3>
   </div>
+<script>
+  window.playing = false;
+  document.body.onkeyup = function(e){
+    if(e.keyCode == 32){
+      //your code
+      if(window.playing == true) {
+        document.getElementById('livestream').pause();
+        window.playing = false;
+      }else{
+        document.getElementById('livestream').play();
+        window.playing = true;
+      }
 
+      e.preventDefault();
+    }
+
+  }
+</script>
   <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;src=wouters.f%40gmail.com&amp;color=%23333333&amp;ctz=Europe%2FBrussels" style="border-width:0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
 </div>
 </body>
