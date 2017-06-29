@@ -71,10 +71,11 @@ foreach($weather_data->observations as $observation) {
   </script>
 </head>
 <body>
+<div class="hideme" style="display:none;">
 <audio controls id="livestream">
   <source src="http://mp3.streampower.be/ra2vlb-high.mp3" type="audio/mpeg">
 </audio>
-
+</div>
 <div id="wrapper">
   <div id="upper-left">
     <div id="clock"></div> <!-- Including the date/time-script -->
@@ -151,13 +152,36 @@ foreach($weather_data->observations as $observation) {
 <script>
   window.playing = false;
   document.body.onkeyup = function(e){
+  	console.log(e.keyCode);
+  	var audio = document.getElementById('livestream');
+  	console.log(audio.volume);
+  	if(e.keyCode == 85){
+  		// VOLUME UP
+  		if(!window.playing){
+  			audio.play();
+        window.playing = true;
+  		}
+  		if(audio.volume < 1) {
+  			audio.volume = audio.volume + 0.1;
+  		}
+
+  	}
+  	if (e.keyCode == 72){
+  		// VOLUME DOWN
+  		if(audio.volume > 0.1) {
+  			audio.volume = audio.volume - 0.1;
+  		}else{
+  			audio.pause();
+        window.playing = false;
+  		}
+  	}
     if(e.keyCode == 32){
       //your code
       if(window.playing == true) {
-        document.getElementById('livestream').pause();
+        audio.pause();
         window.playing = false;
       }else{
-        document.getElementById('livestream').play();
+        audio.play();
         window.playing = true;
       }
 
