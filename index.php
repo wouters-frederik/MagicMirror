@@ -34,7 +34,10 @@ $komende_dagen = [];
 foreach($voorspellingen_data->forecasts as $forecast) {
   if ($forecast->location == 'Centrum') {
   	$unixtime = strtotime($forecast->beginDate);
-  	$komende_dagen[date('md', $unixtime)] = date('d/m', $unixtime) . ' ' . $forecast->temperature->minimum . ' - '. $forecast->temperature->maximum . ' &#8451;';
+  	if(date('md', $unixtime) <> date('md')) {
+  	$komende_dagen[date('md', $unixtime)] = date('d M', $unixtime) . ':  ' . $forecast->temperature->minimum . '&#8451; - '. $forecast->temperature->maximum . ' &#8451;';
+  	}
+
 
   }
   ksort($komende_dagen);
