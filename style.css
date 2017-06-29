@@ -97,7 +97,7 @@ p.date {
     position: absolute;
     width: 27px;
     height: 27px;
-    bottom: 40px;
+    top: 50px;
     right: 10px;
     background: url(/deredactie_sprite.svg) no-repeat 40px 0
 
