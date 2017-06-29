@@ -26,6 +26,11 @@ and "bottom" needs to be changed in order to match your monitor's resolution */
     float: left;
     text-align: center;
 }
+#voorspellingen{
+	text-align: left;
+	margin-left: 4em;
+  margin-right: 5em;
+}
 
 #upper-right {
     width: 340px;

@@ -22,6 +22,20 @@ foreach($weather_data->observations as $observation) {
     $weather_img = $observation->weathertype;
   }
 }
+
+$voorspellingen = "https://services.vrt.be/weather/forecasts/belgische_streken?accept=application%2fvnd.weather.vrt.be.forecasts_1.0%2Bjson";$voorspellingen_data = json_decode(fetch_data($voorspellingen));
+//var_dump($weather_data);
+$komende_dagen = [];
+foreach($voorspellingen_data->forecasts as $forecast) {
+  if ($forecast->location == 'Centrum') {
+  	$unixtime = strtotime($forecast->beginDate);
+  	$komende_dagen[date('md', $unixtime)] = date('d/m', $unixtime) . ' ' . $forecast->temperature->minimum . ' - '. $forecast->temperature->maximum . ' &#8451;';
+
+  }
+  ksort($komende_dagen);
+}
+//var_dump($komende_dagen);
+//die();
 ?>
 <!doctype html>
 <html lang="sv">
@@ -88,6 +102,13 @@ foreach($weather_data->observations as $observation) {
         <?php echo $weather_temp; ?>&#8451;
         <i class="weather-icon helder_wolk night"></i>
       </h3>
+      <div id="voorspellingen">
+      <?php
+      foreach($komende_dagen as $dag) {
+      	echo $dag . '<br>';
+      }
+      ?>
+      </div>
     </div>
   </div>
 
@@ -175,7 +196,7 @@ foreach($weather_data->observations as $observation) {
         window.playing = false;
   		}
   	}
-    if(e.keyCode == 32){
+    if(e.keyCode == 80){
       //your code
       if(window.playing == true) {
         audio.pause();
