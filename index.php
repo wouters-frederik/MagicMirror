@@ -20,7 +20,12 @@ foreach($weather_data->observations as $observation) {
   if ($observation->location == 'Centrum') {
     $weather_temp = $observation->temperature;
     $weather_img = $observation->weathertype;
+
   }
+}
+$night = '';
+if (date(h) < 6 || date(h) > 22) {
+	$night = 'night';
 }
 
 $voorspellingen = "https://services.vrt.be/weather/forecasts/belgische_streken?accept=application%2fvnd.weather.vrt.be.forecasts_1.0%2Bjson";$voorspellingen_data = json_decode(fetch_data($voorspellingen));
@@ -100,7 +105,7 @@ foreach($voorspellingen_data->forecasts as $forecast) {
     <div id="weather">
       <h3>
         <?php echo $weather_temp; ?>&#8451;
-        <i class="weather-icon helder_wolk night"></i>
+        <i class="weather-icon <?php echo $weather_img ;?> <?php echo $night; ?>"></i>
       </h3>
       <div id="voorspellingen">
       <?php
